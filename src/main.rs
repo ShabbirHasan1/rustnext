@@ -56,12 +56,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>>{
 }
 
 async fn paths(url: &String) -> Result<String, String> {
-    let response2 = reqwest::get(url)
+    let response = reqwest::get(url)
         .await.unwrap_or_else(|e| {
         eprintln!("{e}");
         exit(0);
     });
-    let body = response2
+    let body = response
         .text()
         .await
         .expect("Failed to read response text");
