@@ -27,8 +27,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>>{
             match format_url {
                 Ok(url_format) => {
                     let host = url_format.host_str().unwrap();
-                    let host = format!("{proto}://{host}");
-                    let full_url = format!("{}{}", host, path);
+                    let full_url = format!("{proto}://{host}");
                     let response = reqwest::get(full_url)
                         .await
                         .unwrap_or_else(|e| {
