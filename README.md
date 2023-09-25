@@ -35,8 +35,8 @@ Code that retrieves paths from the next.js framework
 Usage: rustnext.exe [OPTIONS] --url <URL>
 
 Options:
-  -u, --url <URL>      
-  -p, --proto <PROTO>  [default: https]
+  -u, --url <URL>      Insert URL
+  -p, --proto <PROTO>  Insert protocol [default: https]
   -h, --help           Print help
   -V, --version        Print version
 ```

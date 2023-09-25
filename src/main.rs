@@ -7,10 +7,10 @@ use clap::Parser;
 #[derive(Parser)]
 #[clap(name="rustnext.exe", author="joaojj)", version="1.0", about="Code that retrieves paths from the next.js framework", long_about = None)]
 struct Args {
-    #[clap(short, long, required = true)]
+    #[clap(short, long, required = true, help = "Insert URL")]
     url: String,
 
-    #[clap(short, long, default_value = "https")]
+    #[clap(short, long, default_value = "https", help = "Insert protocol")]
     proto: String
 }
 
