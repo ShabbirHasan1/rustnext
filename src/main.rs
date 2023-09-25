@@ -48,7 +48,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>>{
             }
         },
         Err(error) => {
-            println!("{error}");
+            println!("{}", error);
         }
     }
     Ok(())
