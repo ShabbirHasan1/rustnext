@@ -1,8 +1,8 @@
-use std::process::exit;
-use url::Url;
+use clap::Parser;
 use regex::Regex;
 use reqwest;
-use clap::Parser;
+use std::process::exit;
+use url::Url;
 
 #[derive(Parser)]
 #[clap(name="rustnext.exe", author="joaojj)", version="1.0", about="Code that retrieves paths from the next.js framework", long_about = None)]
@@ -11,12 +11,11 @@ struct Args {
     url: String,
 
     #[clap(short, long, default_value = "https", help = "Insert protocol")]
-    proto: String
+    proto: String,
 }
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>>{
-
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
     let url = args.url;
     let proto = args.proto;
@@ -28,55 +27,48 @@ async fn main() -> Result<(), Box<dyn std::error::Error>>{
                 Ok(url_format) => {
                     let host = url_format.host_str().unwrap();
                     let full_url = format!("{proto}://{host}{path}");
-                    let response = reqwest::get(full_url)
-                        .await
-                        .unwrap_or_else(|e| {
-                            eprintln!("{e}");
-                            exit(0); 
-                        });
-        
+                    let response = reqwest::get(full_url).await.unwrap_or_else(|e| {
+                        eprintln!("{e}");
+                        exit(0);
+                    });
+
                     let body: String = response.text().await.expect("Failed to read response text");
                     let regex_path = Regex::new(r#"(/[^"]+)"|'(/[^']+)'"#).unwrap();
                     for cap in regex_path.captures_iter(&body) {
                         println!("{}", &cap[0].replace('"', ""));
                     }
-                }, 
+                }
                 Err(erro) => {
                     println!("{}", erro);
                     exit(0);
                 }
             }
-        },
+        }
         Err(error) => {
             println!("{}", error);
         }
     }
     Ok(())
-    
 }
 
 async fn paths(url: &String) -> Result<String, String> {
-    let response = reqwest::get(url)
-        .await.unwrap_or_else(|e| {
+    let response = reqwest::get(url).await.unwrap_or_else(|e| {
         eprintln!("{e}");
         exit(0);
     });
-    let body = response
-        .text()
-        .await
-        .expect("Failed to read response text");
+    let body = response.text().await.expect("Failed to read response text");
 
     let re = Regex::new(r"/_next/static/[^/]+/_buildManifest.js").unwrap();
 
     let result = re
         .find(&body)
-        .map_or("0".to_string(), |matched| {
-            matched.as_str().to_string()
-        });
-    
-    if result == "0"{
-        return Err(String::from("Couldn't find the corresponding file, is the site really next.js?"));
-    }else {
+        .map_or("0".to_string(), |matched| matched.as_str().to_string());
+
+    if result == "0" {
+        return Err(String::from(
+            "Couldn't find the corresponding file, is the site really next.js?",
+        ));
+    } else {
         return Ok(result);
     }
 }
