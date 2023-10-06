@@ -5,7 +5,7 @@ use std::process::exit;
 use url::Url;
 
 #[derive(Parser)]
-#[clap(name="rustnext.exe", author="joaojj)", version="1.0", about="Code that retrieves paths from the next.js framework", long_about = None)]
+#[clap(name="rustnext", author="joaojj)", version="1.0", about="Code that retrieves paths from the next.js framework", long_about = None)]
 struct Args {
     #[clap(short, long, required = true, help = "Insert URL")]
     url: String,

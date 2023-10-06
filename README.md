@@ -32,7 +32,7 @@ cargo build
 ```
 Code that retrieves paths from the next.js framework
 
-Usage: rustnext.exe [OPTIONS] --url <URL>
+Usage: rustnext [OPTIONS] --url <URL>
 
 Options:
   -u, --url <URL>      Insert URL
