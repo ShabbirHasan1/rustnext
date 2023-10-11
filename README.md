@@ -1,17 +1,16 @@
-<img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=0000FF&height=120&section=header"/>
-
-[![Typing SVG](https://readme-typing-svg.herokuapp.com/?color=0000FF&size=32&center=true&vCenter=true&width=1000&height=30&lines=rustnext)](https://git.io/typing-svg)
-
-
-<p align="center">
-  <a href="#Usage">Usage</a> •
-  <a href="#Compile">Compile</a> •
-  <a href="#Details">Details</a>
+# rustnext
+<p align="left">
+	<a href="https://www.rust-lang.org/"><img src="https://img.shields.io/badge/made%20with-Rust-red"></a>
+	<a href="#"><img src="https://img.shields.io/badge/platform-osx%2Flinux%2Fwindows-blueviolet"></a>
 </p>
 
----
-
 `rustnext` was designed to retrieve paths from the _buildManifest.js file that is used by the Next.js framework 🦀
+
+- [Usage](#usage)
+- [Compile](#compile)
+- [Details](#details)
+
+
 ## Usage
 
 - To use, just enter the URL:
@@ -24,7 +23,7 @@ rustnext -u <URL> --proto http
 ```
 # Compile
 ```sh
-cargo build
+cargo build --release
 ```
 
 # Details
