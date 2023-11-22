@@ -4,12 +4,14 @@
 	<a href="#"><img src="https://img.shields.io/badge/platform-osx%2Flinux%2Fwindows-blueviolet"></a>
 </p>
 
-`rustnext` was designed to retrieve paths from the _buildManifest.js file that is used by the Next.js framework 🦀
-
+- [Overview](#overview)
 - [Usage](#usage)
 - [Compile](#compile)
 - [Details](#details)
 
+# Overview
+
+`rustnext` was designed to retrieve paths from the _buildManifest.js file that is used by the Next.js framework 🦀
 
 ## Usage
 
