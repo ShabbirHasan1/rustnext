@@ -66,7 +66,7 @@ async fn paths(url: &String) -> Result<String, String> {
 
     if result == "0" {
         return Err(String::from(
-            "Couldn't find the corresponding file, is the site really next.js?",
+            "[!] Couldn't find the corresponding file, is the site really next.js?",
         ));
     } else {
         return Ok(result);
